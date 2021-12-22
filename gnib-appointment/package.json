@@ -1,0 +1,36 @@
+{
+  "name": "gnib-appointment",
+  "version": "0.0.0",
+  "description": "Forked from https://github.com/ricardodantas/gnib-ireland-client.git and enhanced to add cron and mobile notification",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "scripts": {
+    "dev": "ts-node ./src/index.ts",
+    "build": "rm -fr ./dist && tsc"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pratheekbhandary/ireland_jobhunt"
+  },
+  "keywords": [
+    "gnib",
+    "typescript",
+    "library",
+    "ireland"
+  ],
+  "author": "Pratheek Bhandary <pratheekbhadary619@gmail.com>",
+  "license": "MIT",
+  "homepage": "https://github.com/pratheekbhandary/ireland_jobhunt#readme",
+  "dependencies": {
+    "cron": "^1.8.2",
+    "node-fetch": "^2.3.0",
+    "socks-proxy-agent": "^6.1.1",
+    "winston": "^3.3.3"
+  },
+  "devDependencies": {
+    "@types/node": "^10.17.60",
+    "ts-node": "^8.10.2",
+    "typescript": "^3.9.3"
+  },
+  "engine": "node >= 6.10.3"
+}
