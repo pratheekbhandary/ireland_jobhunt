@@ -111,7 +111,11 @@ export async function checkSlotsAvailability(
 
 export const triggerNotification = async () => {
   const event = "gnib_appointment";
+  const event_web = "gnib_appointment_web";
   await fetch(
     `https://maker.ifttt.com/trigger/${event}/with/key/bh7FcxgiUux43OL-AhbJgo`
+  );
+  await fetch(
+    `https://maker.ifttt.com/trigger/${event_web}/with/key/bh7FcxgiUux43OL-AhbJgo`
   );
 };
