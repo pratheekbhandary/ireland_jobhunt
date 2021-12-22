@@ -6,7 +6,8 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "dev": "ts-node ./src/index.ts",
-    "build": "rm -fr ./dist && tsc"
+    "build": "rm -fr ./dist && tsc",
+    "start:cron": "node dist/run-cron.js"
   },
   "repository": {
     "type": "git",
