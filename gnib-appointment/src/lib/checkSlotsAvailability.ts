@@ -31,6 +31,7 @@ function buildUrl(
 }
 function getSlots(json) {
   if (json?.empty === "TRUE") return [];
+  if (json?.slots?.[0] === "empty") return [];
   return typeof json.slots === "string" ? JSON.parse(json.slots) : json.slots;
 }
 
