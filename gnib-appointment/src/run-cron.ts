@@ -6,7 +6,7 @@ import checkSlotsAvailability, {
 
 const CronJob = require("cron").CronJob;
 const job = new CronJob(
-  "* * * * *",
+  "*/10 * * * * *",
   () => {
     checkSlotsAvailability(Types.New, Categories.All, Subcategories.All);
   },
