@@ -2,7 +2,7 @@ import { SocksProxyAgent } from "socks-proxy-agent";
 import fetch from "node-fetch";
 import { Types, Categories, Subcategories } from "./interfaces";
 import logger, { successLogger } from "./logger";
-
+require("dotenv").config();
 const agent = new SocksProxyAgent("socks5h://127.0.0.1:9050");
 
 let TAG_LEN = 32;
@@ -100,6 +100,7 @@ export async function checkSlotsAvailability(
         if (slots.length > 0) {
           successLogger.info(`Dates found: ${JSON.stringify(slots)}`);
           await triggerNotification();
+          await openLinkInChrome();
         } else {
           logger.silly("No dates available at the moment");
         }
@@ -111,12 +112,25 @@ export async function checkSlotsAvailability(
 }
 
 export const triggerNotification = async () => {
-  const event = "gnib_appointment";
-  const event_web = "gnib_appointment_web";
-  await fetch(
-    `https://maker.ifttt.com/trigger/${event}/with/key/bh7FcxgiUux43OL-AhbJgo`
-  );
-  await fetch(
-    `https://maker.ifttt.com/trigger/${event_web}/with/key/bh7FcxgiUux43OL-AhbJgo`
-  );
+  try {
+    const event = "gnib_appointment";
+    const event_web = "gnib_appointment_web";
+    await fetch(
+      `https://maker.ifttt.com/trigger/${event}/with/key/${process.env.IFTT_ID}`
+    );
+    await fetch(
+      `https://maker.ifttt.com/trigger/${event_web}/with/key/${process.env.IFTT_ID}`
+    );
+  } catch (err) {
+    logger.error("Failed to trigger", err);
+  }
 };
+
+export const openLinkInChrome = async () => {
+  try {
+    await fetch(`https://${process.env.CHROME_TRIGGER_LINK}`);
+  } catch (err) {
+    logger.error("Failed to open link", err);
+  }
+};
+
