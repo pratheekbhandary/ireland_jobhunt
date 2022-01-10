@@ -2,7 +2,7 @@ import { appointmentSiteStatus } from "./index";
 
 const CronJob = require("cron").CronJob;
 const job = new CronJob(
-  "*/10 * * * * *",
+  "*/30 * * * * *",
   () => {
     appointmentSiteStatus();
   },
