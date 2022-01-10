@@ -13,12 +13,11 @@ export async function appointmentSiteStatus(): Promise<any> {
       method: "GET",
       agent,
     })
-      .then((res) => res.json())
       .then((res) => res.text())
       .then(async (appoitmentSiteHTML) => {
         if (
           !appoitmentSiteHTML
-            .replaceAll(/\s/g, "")
+            .replace(/\s/g, "")
             .includes(
               `<p>Thesystemwillbeavailableagainfrom10.00amonMonday10January2022.</p><p>Weunderstandthedifficultiesandfrustrationsexperiencedbycustomerslookingforappointmentsandweapologiseforanyinconveniencecausedbythetemporarydisruptiontotheonlinebookingsystem.</p>`
             )
@@ -26,6 +25,8 @@ export async function appointmentSiteStatus(): Promise<any> {
           successLogger.info(`Site has been updated`);
           await triggerNotification();
           await openLinkInChrome();
+        } else {
+          logger.silly(`No changes to the site`);
         }
       });
     return requestResult;

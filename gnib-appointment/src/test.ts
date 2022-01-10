@@ -1,6 +1,5 @@
-import gnibIrelandClient from "./index";
-import { triggerNotification } from "./lib/checkSlotsAvailability";
+import gnibIrelandClient, { appointmentSiteStatus } from "./index";
 
 (async () => {
-  await triggerNotification();
+  await appointmentSiteStatus();
 })();
