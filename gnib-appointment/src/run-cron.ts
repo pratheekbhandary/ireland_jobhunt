@@ -1,14 +1,10 @@
-import checkSlotsAvailability, {
-  Types,
-  Categories,
-  Subcategories,
-} from "./index";
+import { appointmentSiteStatus } from "./index";
 
 const CronJob = require("cron").CronJob;
 const job = new CronJob(
   "*/10 * * * * *",
   () => {
-    checkSlotsAvailability(Types.New, Categories.All, Subcategories.All);
+    appointmentSiteStatus();
   },
   null,
   true,
