@@ -7,6 +7,6 @@ This project extends work done by ricardodantas to add features like:
 - Cron job to trigger the API at intervals, to check for appointments.
 - Parses the response to check for slots and logs it.
 - Webhook integration for Discord channel and IFTTT push notifications.
-- Also a local server, exposed using `ngrok`. This opens up a chrome tab and pre-fills the appointment form when webhook is triggered.
+- Also a local server, exposed using `ngrok`. This opens up a chrome tab and pre-fills the appointment form using `Autofill` chrome extension when webhook is triggered.
 - Every request is made via TOR http agent in order to bypass rate-limiting.
 - CRON task and Tor docker container is running in an AWS EC2.
